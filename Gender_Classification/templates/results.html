@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#068cec !important;">
+    <h2 style="color:#fff;">Gender Names Classification</h2>
+    <p style="color:#fff;">Using Machine Learning to Classify Gender Names</p>
+  </div>
+  <h3>Result Prediction</h3>
+     <div class="card text-center">
+      <div class="card-body" style="background-color:#1daeff;">
+        <hr/>
+        <h3>The entered name: </h3>
+        <hr/>
+        <p class="card-text">
+          <div class="alert alert-danger">
+            {{ name }}
+          </div>
+        </p>
+        <!-- Main ML Prediction Display Here -->
+        {% if pred ==  0 %}
+        <p class="card-text">
+          <div class="alert alert-danger">
+            Female
+          </div>
+        </p>
+        {% elif pred == 1 %}
+    	   <p class="card-text">
+          <div class="alert alert-danger">
+            Male
+          </div>
+         </p>
+        {% endif%}
+      </div>
+     </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
